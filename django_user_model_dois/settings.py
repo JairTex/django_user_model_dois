@@ -125,5 +125,7 @@ MEDIA_ROOT = str(BASE_DIR / 'media')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 AUTH_USER_MODEL = "usuarios.CustomUsuario"
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
