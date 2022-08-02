@@ -4,7 +4,7 @@ from django.db import models
 # from django.contrib.auth.models import AbstractBaseUser
 # Diferenças: Ambos são usuários abstratos, mas o Base é mais básico.
 
-class UsuairoManager(BaseUserManager):
+class UsuarioManager(BaseUserManager):
     use_in_migrations = True
 
     def _create_user(self, email, password, **extra_fields):
@@ -19,7 +19,7 @@ class UsuairoManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         #extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', False)
-        return self._create_user
+        return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
@@ -41,3 +41,5 @@ class CustomUsuario(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    objects = UsuarioManager()
